@@ -4,10 +4,8 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import {Button} from '@/components/ui/button'
 import {Input} from '@/components/ui/input'
-import {Card,CardHeader,CardTitle} from '@/components/ui/card'
+import {Card,CardTitle} from '@/components/ui/card'
 
-
- 
 export default function CreateEmployee() {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");

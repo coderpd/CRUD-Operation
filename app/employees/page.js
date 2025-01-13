@@ -2,12 +2,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Card, CardHeader,  CardTitle } from '@/components/ui/card'
 import {Button} from '@/components/ui/button';
 import {Table,
   TableHeader,
   TableBody,
-  TableFooter,
   TableHead,
   TableRow,
   TableCell,
