@@ -2,6 +2,21 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import {Button} from '@/components/ui/button';
+import {Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,} from '@/components/ui/table';   
+  
+  import { FaEdit } from "react-icons/fa";
+  import { AiFillDelete } from "react-icons/ai";
+
+
 
 export default function Employees() {
   const [employees, setEmployees] = useState([]);
@@ -18,31 +33,46 @@ export default function Employees() {
 
   return (
     <div>
-      <h1>Employees</h1>
-      <Link href="/employees/create">Add Employee</Link>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Salary</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <Card className="flex flex-col hover:text--800 items-center w-[500px] ml-[400px] mt-10 hover:bg-[linear-gradient(skyblue,pink)] transform transition duration-300 ease-in-out hover:scale-110 " >
+        <CardHeader className="text-3xl text-bold  font-serif">
+        <h1>Employees Information</h1>
+        </CardHeader>
+      <CardTitle className="mb-10">
+        <Button variant="default">
+        <Link href="/employees/create" className="font-sans hover:text-blue-500  ">Add Employee</Link>
+        </Button>
+      
+      </CardTitle>
+      
+      </Card>
+      <Table className="mt-10 w-[500px] ml-[400px] ">
+      <TableCaption className="mt-10" >A list of the Employee Information</TableCaption>
+         <TableHeader>
+          <TableRow >
+            <TableHead >Name</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Salary</TableHead>
+            <TableHead >Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {employees.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.name}</td>
-              <td>{employee.location}</td>
-              <td>{employee.salary}</td>
-              <td>
-                <Link href={`/employees/${employee.id}`}>Edit</Link>
-                <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
-              </td>
-            </tr>
+            <TableRow key={employee.id}>
+              <TableCell>{employee.name}</TableCell>
+              <TableCell>{employee.location}</TableCell>
+              <TableCell>{employee.salary}</TableCell>
+              <TableCell className="flex gap-5">
+                <Link href={`/employees/${employee.id}` }><FaEdit /></Link> 
+                <button onClick={() => deleteEmployee(employee.id)}><AiFillDelete /></button>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
+
+
+
+
     </div>
   );
 }
